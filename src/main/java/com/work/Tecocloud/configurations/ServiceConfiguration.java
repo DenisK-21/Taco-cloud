@@ -1,4 +1,4 @@
-package com.work.Tecocloud;
+package com.work.Tecocloud.configurations;
 
 import com.work.Tecocloud.models.Ingredient;
 import com.work.Tecocloud.repository.IngredientRepository;
