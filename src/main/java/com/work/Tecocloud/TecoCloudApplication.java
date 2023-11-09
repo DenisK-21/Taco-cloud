@@ -10,10 +10,5 @@ public class TecoCloudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TecoCloudApplication.class, args);
-
-
 	}
-
-
-
 }

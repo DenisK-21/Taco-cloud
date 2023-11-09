@@ -10,7 +10,7 @@ import static
 import static
         org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import com.work.Tecocloud.controller.HomeController;
+import com.work.Tecocloud.controller.WebConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,8 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 
-@WebMvcTest(HomeController.class)
-public class HomeControllerTest {
+@WebMvcTest(WebConfig.class)
+public class WebConfigTest {
     @Autowired
     private MockMvc mockMvc;
 
