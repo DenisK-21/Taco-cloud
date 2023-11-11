@@ -1,8 +1,10 @@
 package com.work.Tecocloud.controller;
 
+import com.work.Tecocloud.models.User;
 import com.work.Tecocloud.repository.OrderRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +31,12 @@ public class OrderController {
 
     @PostMapping
     public String processOrder(@Valid TacoOrder tacoOrder, Errors errors,
-                               SessionStatus sessionStatus) {
+                               SessionStatus sessionStatus,
+                               @AuthenticationPrincipal User user) {
         if (errors.hasErrors()){
             return "orderForm";
         }
+        tacoOrder.setUser(user);
         log.info("Order submitted: {}", tacoOrder);
         orderRepository.save(tacoOrder);
         sessionStatus.setComplete();
