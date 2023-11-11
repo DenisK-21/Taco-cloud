@@ -34,10 +34,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return  http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/design", "/orders").hasRole("USER")
+        http.csrf().disable();
+        http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/design", "/orders/**").hasRole("USER")
                 .requestMatchers("/", "/**").permitAll()).formLogin(form -> form
-                .loginPage("/login").permitAll()).build();
+                .loginPage("/login").permitAll());
+        http.logout(log -> log.logoutSuccessUrl("/"));
+        return http.build();
 
     }
 }
