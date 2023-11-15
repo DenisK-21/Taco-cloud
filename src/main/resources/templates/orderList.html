@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+</head>
+<body>
+    <h1>Список ваших заказов</h1>
+    <ul th:each="order : ${orders}">
+        <h2>Информация о заказе</h2>
+        <span th:text="${order.getPlacedAt()}">date</span>
+        <span th:text="${order.getDeliveryCity()}">taco name</span>
+        <span th:text="${order.getDeliveryName()}">taco name</span>
+        <span th:text="${order.getDeliveryState()}">taco name</span>
+        <span th:text="${order.getDeliveryStreet()}">taco name</span>
+        <h3>Список блюд</h3>
+        <li th:each="taco : ${order.getTacos()}">
+            <span th:text="${taco.getName()}">taco name</span>
+        </li>
+    </ul>
+
+
+
+</body>
+</html>
